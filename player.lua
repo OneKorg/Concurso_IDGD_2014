@@ -17,16 +17,18 @@ end
 function player.movement(dt)
 	if love.keyboard.isDown("w") then 
 		player.y = player.y - player.speed * dt 
-	end
-	if love.keyboard.isDown("s") then 
+	elseif love.keyboard.isDown("s") then 
 		player.y = player.y + player.speed * dt
+	else
+	  	player.y = player.y + (player.speed*gamepad.ly) * dt
 	end
 	if love.keyboard.isDown("a") then
 		player.x = player.x - player.speed * dt 
-	end 
-	if love.keyboard.isDown("d") then
+	elseif love.keyboard.isDown("d") then
 		player.x = player.x + player.speed * dt 
-	end 
+	else
+		player.x = player.x + (player.speed*gamepad.lx) * dt
+	end
 end 
 
 function player.screenBound()
